@@ -9,8 +9,8 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return InheritedPosition(
-        ChessPosition(),
+    return UI(
+        LocalInterface(ChessInjector()),
 
         GameScreen());
   }
@@ -20,16 +20,23 @@ class MyApp extends StatelessWidget{
 
 }
 
-class InheritedPosition extends InheritedWidget{
-  final Position position;
+class UI extends InheritedWidget{
+  final LocalInterface  ui;
   final Widget child;
 
-  InheritedPosition(this.position, this.child);
+  UI(this.ui, this.child){
+
+    ui.addPlayer(Player());
+    ui.addPlayer(Player());
+    ui.startLocalGame();
+
+
+  }
 
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
-  static InheritedPosition of(BuildContext context) => 
-      context.inheritFromWidgetOfExactType(InheritedPosition);
+  static UI of(BuildContext context) =>
+      context.inheritFromWidgetOfExactType(UI);
 
 
 
