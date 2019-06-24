@@ -1,3 +1,4 @@
+import 'package:chess/piece_layer.dart';
 import 'package:chess/tile_layer.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -22,7 +23,14 @@ class BoardWidget extends StatelessWidget{
             height: 80,
             width: 80,
 
-            child: TileLayer(),
+            child: Stack(
+
+                children: [
+
+                  TileLayer(),
+                  PieceLayer(),
+                ]
+            ),
 
 
           ),

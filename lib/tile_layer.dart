@@ -45,26 +45,26 @@ class TileLayer extends StatelessWidget {
 
   var ui = UI.of(context).ui;
 
-  int tileColor = t.i.isEven && t.j.isEven ?
+  int tileColor = (t.i + t.j).isEven ?
       ui.theme.tileDark.toInt : ui.theme.tileLight.toInt;
 
 
     return Positioned(
-      left: 10.0 * (8-t.i),
+      left: 10.0 * (7-t.i),
       top: 10.0 * t.j,
 
-      child: Container(
+      child: SizedBox(
         height: 10.0,
         width: 10.0,
 
-        color: Color(tileColor),
+        child: Container(
+          color: Color(tileColor),
+        ),
+
+
       ),
     );
   }
-
-
-
-
 
 
   }

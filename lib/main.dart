@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget{
     return UI(
         LocalInterface(ChessInjector()),
 
-        GameScreen());
+        MaterialApp(
+            home: GameScreen()));
   }
 
 
