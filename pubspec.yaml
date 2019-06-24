@@ -1,0 +1,25 @@
+name: chess
+description: Chess on Flutter
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+
+  game_server:
+    git:
+      url: https://github.com/GingerNut/game_server.git
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+  uses-material-design: true
