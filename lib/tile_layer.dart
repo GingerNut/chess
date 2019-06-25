@@ -65,7 +65,7 @@ class TileLayer extends StatelessWidget {
             onTap: (){
               (ui.input as ChessInput).tapTile(t);
 
-              (ui.input as ChessInput).selected = t.pieces.isNotEmpty ? t.pieces.first : null;
+
 
             },
 
