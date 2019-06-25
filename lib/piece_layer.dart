@@ -16,6 +16,7 @@ class PieceLayer extends StatelessWidget {
     return StreamBuilder<Message>(
         stream: ui.events.stream,
         builder: (context, snapshot) {
+
           pieces.clear();
 
           (ui.position as ChessPosition).board.whiteArmy.forEach((p) {
