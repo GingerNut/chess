@@ -57,7 +57,6 @@ class TileLayer extends StatelessWidget {
 
         onTap: (){
           (ui.input as ChessInput).tapTile(t);
-          print('here');
         },
 
         child: SizedBox(
