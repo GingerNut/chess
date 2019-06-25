@@ -19,11 +19,11 @@ class PieceLayer extends StatelessWidget {
           pieces.clear();
 
           (ui.position as ChessPosition).board.whiteArmy.forEach((p) {
-            pieces.add(ChessPiece(p, ChessColor.white));
+            pieces.add(ChessPieceWidget(p, ChessColor.white));
           });
 
           (ui.position as ChessPosition).board.blackArmy.forEach((p) {
-            pieces.add(ChessPiece(p, ChessColor.black));
+            pieces.add(ChessPieceWidget(p, ChessColor.black));
           });
 
           return Stack(
@@ -37,11 +37,11 @@ class PieceLayer extends StatelessWidget {
 
 }
 
-  class ChessPiece extends StatelessWidget{
-  final Piece p;
+  class ChessPieceWidget extends StatelessWidget{
+  final ChessPiece p;
   final ChessColor chessColor;
 
-  const ChessPiece(this.p,this.chessColor);
+  const ChessPieceWidget(this.p,this.chessColor);
 
 
   @override
@@ -59,28 +59,25 @@ class PieceLayer extends StatelessWidget {
       left: 10.0 * (7-t.i),
       top: 10.0 * t.j,
 
-      child: GestureDetector(
-        onTap: (){
-          (ui.input as ChessInput).tapTile(t);
-        },
+        child: IgnorePointer(
+          child: Container(
+            height: 10.0,
+            width: 10.0,
 
-        child: Container(
-          height: 10.0,
-          width: 10.0,
-
-          child: Center(
-            child: Text(
-              p.name,
-              style: TextStyle(
-                fontSize: 9,
-                color: Color(tileColor),
+            child: Center(
+              child: Text(
+                p.name,
+                style: TextStyle(
+                  fontSize: 9,
+                  color: Color(tileColor),
+                ),
               ),
             ),
+
+
           ),
-
-
         ),
-      ),
+
     );
   }
 

@@ -53,15 +53,23 @@ class TileLayer extends StatelessWidget {
       left: 10.0 * (7-t.i),
       top: 10.0 * t.j,
 
-      child: SizedBox(
-        height: 10.0,
-        width: 10.0,
+      child: GestureDetector(
 
-        child: Container(
-          color: Color(tileColor),
+        onTap: (){
+          (ui.input as ChessInput).tapTile(t);
+          print('here');
+        },
+
+        child: SizedBox(
+          height: 10.0,
+          width: 10.0,
+
+          child: Container(
+            color: Color(tileColor),
+          ),
+
+
         ),
-
-
       ),
     );
   }
