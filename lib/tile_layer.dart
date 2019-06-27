@@ -52,8 +52,10 @@ class TileLayer extends StatelessWidget {
         int tileColor = (t.i + t.j).isEven ?
         ui.theme.tileDark.toInt : ui.theme.tileLight.toInt;
 
-        if((ui.input as ChessInput).selected != null){
-          if((ui.input as ChessInput).selected.legalMoves.contains(t)) tileColor = ui.theme.highlight.toInt;
+        ChessInput input = ui.input;
+
+        if(t == input.selected || input.legalMoves.contains(t)){
+          tileColor = ui.theme.highlight.toInt;
         }
 
         return Positioned(
@@ -64,8 +66,6 @@ class TileLayer extends StatelessWidget {
 
             onTap: (){
               (ui.input as ChessInput).tapTile(t);
-
-
 
             },
 
