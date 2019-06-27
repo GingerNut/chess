@@ -51,6 +51,7 @@ class PieceLayer extends StatelessWidget {
     Tile t = p.tile;
 
   var ui = UI.of(context).ui;
+  ChessInput input = ui.input;
 
   int tileColor = chessColor == ChessColor.white ?
       ui.theme.lightText.toInt : ui.theme.darkText.toInt;
@@ -61,21 +62,24 @@ class PieceLayer extends StatelessWidget {
       top: 10.0 * t.j,
 
         child: IgnorePointer(
-          child: Container(
-            height: 10.0,
-            width: 10.0,
+          child: RotatedBox(
+            quarterTurns: input.whiteAtBottom ? 2:0,
+            child: Container(
+              height: 10.0,
+              width: 10.0,
 
-            child: Center(
-              child: Text(
-                p.name,
-                style: TextStyle(
-                  fontSize: 9,
-                  color: Color(tileColor),
+              child: Center(
+                child: Text(
+                  p.name,
+                  style: TextStyle(
+                    fontSize: 9,
+                    color: Color(tileColor),
+                  ),
                 ),
               ),
+
+
             ),
-
-
           ),
         ),
 

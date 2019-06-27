@@ -1,6 +1,7 @@
 import 'package:chess/piece_layer.dart';
 import 'package:chess/tile_layer.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:game_server/game_server.dart';
 
 import 'main.dart';
 
@@ -9,30 +10,34 @@ class BoardWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    var interface = UI.of(context).ui;
+    var ui = UI.of(context).ui;
+    ChessInput input = ui.input;
 
     return Expanded(
 
       child: Container(
 
-        color: Color(interface.theme.background.toInt),
+        color: Color(ui.theme.background.toInt),
 
         child: FittedBox(
 
-          child: SizedBox(
-            height: 80,
-            width: 80,
+          child: RotatedBox(
+            quarterTurns: input.whiteAtBottom ? 2 : 0,
+            child: SizedBox(
+              height: 80,
+              width: 80,
 
-            child: Stack(
+              child: Stack(
 
-                children: [
+                  children: [
 
-                  TileLayer(),
-                  PieceLayer(),
-                ]
+                    TileLayer(),
+                    PieceLayer(),
+                  ]
+              ),
+
+
             ),
-
-
           ),
         ),
       ),
