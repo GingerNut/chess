@@ -1,5 +1,6 @@
 import 'dart:isolate';
 
+import 'package:chess/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';
 
@@ -17,19 +18,19 @@ void main() async{
 
 class MyApp extends StatelessWidget{
 
-  const MyApp();
-
-
   @override
   Widget build(BuildContext context) {
-
-
 
 
     return UI(
 
         MaterialApp(
-            home: GameScreen()));
+            home: Scaffold(
+              body: UI(
+                StartScreen(),
+
+              ),
+            )));
   }
 
 
