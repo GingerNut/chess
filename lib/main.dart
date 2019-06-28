@@ -1,38 +1,45 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';
 
 import 'game_screen.dart';
 
-void main() => runApp(MyApp());
+void main() async{
+
+
+
+
+  runApp(MyApp());
+
+
+}
 
 class MyApp extends StatelessWidget{
+
+  const MyApp();
+
+
   @override
   Widget build(BuildContext context) {
 
+
+
+
     return UI(
-        LocalInterface(ChessInjector()),
 
         MaterialApp(
             home: GameScreen()));
   }
 
 
-
-
 }
 
 class UI extends InheritedWidget{
-  final LocalInterface  ui;
+  final LocalInterface  ui = LocalInterface(ChessInjector());
   final Widget child;
 
-  UI(this.ui, this.child){
-
-    ui.addPlayer(Player());
-    ui.addPlayer(Player());
-    ui.startLocalGame();
-
-
-  }
+  UI(this.child);
 
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
