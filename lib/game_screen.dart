@@ -1,4 +1,5 @@
 import 'package:chess/board.dart';
+import 'package:chess/start_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';
@@ -7,15 +8,10 @@ import 'main.dart';
 
 
 class GameScreen extends StatelessWidget{
-
+  static const String routeName = 'game';
 
   @override
   Widget build(BuildContext context) {
-
-    var ui = UI.of(context).ui;
-    ui.addPlayer(Player());
-    ui.addPlayer(Player());
-     ui.startLocalGame();
 
     return SafeArea(
       child: Column(
@@ -23,7 +19,6 @@ class GameScreen extends StatelessWidget{
         mainAxisSize: MainAxisSize.min,
 
         children: <Widget>[
-
 
           BoardWidget(),
 
@@ -44,51 +39,69 @@ class ButtonRow extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     var ui = UI.of(context).ui;
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Container(
+      color: Color(ui.theme.background.toInt),
 
-      children: <Widget>[
-        new RaisedButton(
-          padding: const EdgeInsets.all(8.0),
-          textColor: Colors.white,
-          color: Colors.blue,
-          onPressed: () async{
+      child: Row(
 
-            ui.resetGame();
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-            ui.addPlayer(Player());
-            ui.addPlayer(ComputerPlayer(ChessInjector()));
-            await ui.startLocalGame();
+        children: <Widget>[
 
-            print('started computer game');
-
-            ui.events.add(Success());
-          },
-          child: new Text("Computer game"),
-        ),
-
-        new RaisedButton(
-          padding: const EdgeInsets.all(8.0),
-          textColor: Colors.white,
-          color: Colors.blue,
-          onPressed: () async{
-
-            ui.resetGame();
-
-            ui.addPlayer(Player());
-            ui.addPlayer(Player());
-            await ui.startLocalGame();
-
-            print('started human game');
-
-            ui.events.add(Success());
-          },
-          child: new Text("Human game"),
-        ),
-
-      ],
+          RaisedButton(
+            padding: const EdgeInsets.all(8.0),
+            textColor: Color(ui.theme.lightText.toInt),
+            color: Color(ui.theme.button.toInt),
+            onPressed: () async{
 
 
+
+
+              ui.events.add(ChangeScreen(StartScreen.routeName));
+            },
+            child: new Text("Home"),
+
+      ),
+
+
+           RaisedButton(
+            padding: const EdgeInsets.all(8.0),
+            textColor: Color(ui.theme.lightText.toInt),
+            color: Color(ui.theme.button.toInt),
+            onPressed: () async{
+
+              ui.resetGame();
+
+              ui.addPlayer(Player());
+              ui.addPlayer(ComputerPlayer(ChessInjector()));
+              await ui.startLocalGame();
+
+              ui.events.add(ChangeScreen(GameScreen.routeName));
+            },
+            child: new Text("Computer game"),
+          ),
+
+           RaisedButton(
+            padding: const EdgeInsets.all(8.0),
+            textColor: Color(ui.theme.lightText.toInt),
+            color: Color(ui.theme.button.toInt),
+            onPressed: () async{
+
+              ui.resetGame();
+
+              ui.addPlayer(Player());
+              ui.addPlayer(Player());
+              await ui.startLocalGame();
+
+              ui.events.add(ChangeScreen(GameScreen.routeName));
+            },
+            child: new Text("Human game"),
+          ),
+
+        ],
+
+
+      ),
     );
   }
 

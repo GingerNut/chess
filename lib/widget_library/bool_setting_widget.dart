@@ -10,7 +10,7 @@ class BoolSettingsWidget extends StatefulWidget{
   const BoolSettingsWidget(this.text, this.variable);
 
   @override
-  _BoolSettingsWidgetState createState() => _BoolSettingsWidgetState(text, variable);
+  _BoolSettingsWidgetState createState() => _BoolSettingsWidgetState();
 }
 
 class _BoolSettingsWidgetState extends State<BoolSettingsWidget> {
@@ -18,7 +18,14 @@ class _BoolSettingsWidgetState extends State<BoolSettingsWidget> {
   String text;
   bool variable;
 
-  _BoolSettingsWidgetState(this.text, this.variable);
+  _BoolSettingsWidgetState();
+
+  initState(){
+    text = widget.text;
+    variable = widget.variable;
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +61,7 @@ class _BoolSettingsWidgetState extends State<BoolSettingsWidget> {
           onChanged: (value) {
             setState(() {
               variable = value;
+              print(ui.localSettings.timer);
 
             });
           },

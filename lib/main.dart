@@ -21,13 +21,14 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-
     return UI(
 
         MaterialApp(
             home: Scaffold(
               body: UI(
-                StartScreen(),
+
+                Router(
+                ),
 
               ),
             )));
@@ -47,7 +48,49 @@ class UI extends InheritedWidget{
   static UI of(BuildContext context) =>
       context.inheritFromWidgetOfExactType(UI);
 
+}
 
 
+class Router extends StatefulWidget{
 
+  @override
+  _RouterState createState() => _RouterState();
+}
+
+class _RouterState extends State<Router> {
+  Widget screen = StartScreen();
+
+  Widget build(BuildContext context) {
+
+    return StreamBuilder<GameMessage>(
+
+        stream: UI.of(context).ui.events.stream,
+        builder: (context, snapshot) {
+
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return screen;
+
+          } else {
+
+            GameMessage gameMessage = snapshot.data;
+
+            switch (gameMessage.runtimeType){
+              case ChangeScreen:
+                switch(gameMessage.message){
+                  case GameScreen.routeName: screen = GameScreen();
+                  break;
+
+                  case StartScreen.routeName: screen = StartScreen();
+                  break;
+
+                }
+
+            }
+
+          }
+
+          return screen;
+        }
+    );
+  }
 }
