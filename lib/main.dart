@@ -7,13 +7,7 @@ import 'package:game_server/game_server.dart';
 import 'game_screen.dart';
 
 void main() async{
-
-
-
-
   runApp(MyApp());
-
-
 }
 
 class MyApp extends StatelessWidget{

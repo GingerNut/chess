@@ -54,9 +54,6 @@ class ButtonRow extends StatelessWidget{
             color: Color(ui.theme.button.toInt),
             onPressed: () async{
 
-
-
-
               ui.events.add(ChangeScreen(StartScreen.routeName));
             },
             child: new Text("Home"),
