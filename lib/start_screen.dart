@@ -49,8 +49,6 @@ class StartScreen extends StatelessWidget{
                         },
                   'start game'
 
-
-
                 )
               ],
 
@@ -65,8 +63,6 @@ class StartScreen extends StatelessWidget{
 
 
 }
-
-
 
 
 
@@ -104,8 +100,6 @@ class GameButton extends StatelessWidget{
       ),
     );
   }
-
-
 }
 
 

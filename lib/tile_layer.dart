@@ -54,7 +54,7 @@ class TileLayer extends StatelessWidget {
 
         ChessInput input = ui.input;
 
-        if(t == input.selected || input.legalMoves.contains(t)){
+        if(input.legalMoves.contains(t)){
           tileColor = ui.theme.highlight.toInt;
         }
 
