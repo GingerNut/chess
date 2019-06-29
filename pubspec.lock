@@ -72,7 +72,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: bae06227a8e1cdbf21c79fad70ae1a604e760d4b
+      resolved-ref: e40c0906ce067f18021f64487176f12659b641ad
       url: "https://github.com/GingerNut/game_server.git"
     source: git
     version: "0.0.0"

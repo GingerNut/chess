@@ -3,23 +3,23 @@ import 'package:chess/main.dart';
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';
 
-class BoolSettingsWidget extends StatefulWidget{
+class DoubleSettingsWidget extends StatefulWidget{
 
   final String text;
   final BoolSetting setting;
 
-  const BoolSettingsWidget(this.text, this.setting);
+  const DoubleSettingsWidget(this.text, this.setting);
 
   @override
-  _BoolSettingsWidgetState createState() => _BoolSettingsWidgetState();
+  _DoubleSettingsWidgetState createState() => _DoubleSettingsWidgetState();
 }
 
-class _BoolSettingsWidgetState extends State<BoolSettingsWidget> {
+class _DoubleSettingsWidgetState extends State<DoubleSettingsWidget> {
 
   String text;
   BoolSetting setting;
 
-  _BoolSettingsWidgetState();
+  _DoubleSettingsWidgetState();
 
   initState(){
     text = widget.text;
