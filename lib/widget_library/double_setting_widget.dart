@@ -6,7 +6,7 @@ import 'package:game_server/game_server.dart';
 class DoubleSettingsWidget extends StatefulWidget{
 
   final String text;
-  final BoolSetting setting;
+  final DoubleSetting setting;
 
   const DoubleSettingsWidget(this.text, this.setting);
 
@@ -17,9 +17,11 @@ class DoubleSettingsWidget extends StatefulWidget{
 class _DoubleSettingsWidgetState extends State<DoubleSettingsWidget> {
 
   String text;
-  BoolSetting setting;
+  DoubleSetting setting;
 
   _DoubleSettingsWidgetState();
+
+  TextEditingController controller = TextEditingController();
 
   initState(){
     text = widget.text;
@@ -57,15 +59,30 @@ class _DoubleSettingsWidgetState extends State<DoubleSettingsWidget> {
         Expanded(
             child: Container()),
 
-        Switch(
-          value: setting.value,
-          onChanged: (value) {
-            setState(() {
-              setting.value = value;
-            });
-          },
-          activeTrackColor: Color(ui.theme.button.toInt),
-          activeColor: Color(ui.theme.highlight.toInt),
+        Container(
+          width : 120,
+          child: TextField(
+           controller: controller..addListener((){
+             setState(() {
+               setting.value = double.parse(controller.text);
+             });
+           }),
+
+            style: TextStyle(
+              fontSize: 40,
+              color: Color(ui.theme.lightText.toInt)
+            ),
+
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: setting.value.truncate().toString(),
+                hintStyle: TextStyle(
+                    fontSize: 40,
+                    color: Color(ui.theme.lightText.toInt)
+                ),
+            ),
+
+          ),
         ),
 
         Expanded(
@@ -77,3 +94,4 @@ class _DoubleSettingsWidgetState extends State<DoubleSettingsWidget> {
     );
   }
 }
+
