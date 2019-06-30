@@ -1,5 +1,6 @@
 import 'package:chess/board.dart';
 import 'package:chess/start_screen.dart';
+import 'package:chess/widget_library/game_button.dart';
 import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,51 +50,41 @@ class ButtonRow extends StatelessWidget{
 
         children: <Widget>[
 
-          RaisedButton(
-            padding: const EdgeInsets.all(8.0),
-            textColor: Color(ui.theme.lightText.toInt),
-            color: Color(ui.theme.button.toInt),
-            onPressed: () async{
 
-              ui.events.add(ChangeScreen(StartScreen.routeName));
-            },
-            child: new Text("Home"),
-
+          GameButton(
+          Icon(Icons.home),
+              (){ui.events.add(ChangeScreen(StartScreen.routeName));},
+            'home'
       ),
 
+          GameButton(
+              Icon(Icons.computer),
+                  () async{
+                    ui.resetGame();
 
-           RaisedButton(
-            padding: const EdgeInsets.all(8.0),
-            textColor: Color(ui.theme.lightText.toInt),
-            color: Color(ui.theme.button.toInt),
-            onPressed: () async{
+                    ui.addPlayer(Player());
+                    ui.addPlayer(ComputerPlayer(ChessInjector()));
+                    await ui.startLocalGame();
 
-              ui.resetGame();
+                    ui.events.add(ChangeScreen(GameScreen.routeName));
 
-              ui.addPlayer(Player());
-              ui.addPlayer(ComputerPlayer(ChessInjector()));
-              await ui.startLocalGame();
-
-              ui.events.add(ChangeScreen(GameScreen.routeName));
-            },
-            child: new Text("Computer game"),
+                },
+              'play computer'
           ),
 
-           RaisedButton(
-            padding: const EdgeInsets.all(8.0),
-            textColor: Color(ui.theme.lightText.toInt),
-            color: Color(ui.theme.button.toInt),
-            onPressed: () async{
+          GameButton(
+              Icon(Icons.person),
+                  () async{
+                ui.resetGame();
 
-              ui.resetGame();
+                ui.addPlayer(Player());
+                ui.addPlayer(Player());
+                await ui.startLocalGame();
 
-              ui.addPlayer(Player());
-              ui.addPlayer(Player());
-              await ui.startLocalGame();
+                ui.events.add(ChangeScreen(GameScreen.routeName));
 
-              ui.events.add(ChangeScreen(GameScreen.routeName));
-            },
-            child: new Text("Human game"),
+              },
+              'play computer'
           ),
 
         ],
