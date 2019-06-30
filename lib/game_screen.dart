@@ -62,14 +62,14 @@ class ButtonRow extends StatelessWidget{
                   () async{
                     ui.resetGame();
 
-                    ui.addPlayer(Player());
+                    ui.addPlayer(LocalPlayer(ui));
                     ui.addPlayer(ComputerPlayer(ChessInjector()));
                     await ui.startLocalGame();
 
                     ui.events.add(ChangeScreen(GameScreen.routeName));
 
                 },
-              'play computer'
+              'Comp'
           ),
 
           GameButton(
@@ -77,14 +77,14 @@ class ButtonRow extends StatelessWidget{
                   () async{
                 ui.resetGame();
 
-                ui.addPlayer(Player());
-                ui.addPlayer(Player());
+                ui.addPlayer(LocalPlayer(ui));
+                ui.addPlayer(LocalPlayer(ui));
                 await ui.startLocalGame();
 
                 ui.events.add(ChangeScreen(GameScreen.routeName));
 
               },
-              'play computer'
+              'Human'
           ),
 
         ],

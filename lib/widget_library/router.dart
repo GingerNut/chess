@@ -29,9 +29,15 @@ class _RouterState extends State<Router> {
 
           } else {
 
-            routes.forEach((r){
-              if(r.routeName == snapshot.data.message) screen = r.screen;
-            });
+            GameMessage message = snapshot.data;
+
+            if(message is ChangeScreen){
+
+              routes.forEach((r){
+                if(r.routeName == message.screen) screen = r.screen;
+              });
+            }
+
 
           }
 

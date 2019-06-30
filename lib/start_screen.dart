@@ -44,8 +44,8 @@ class StartScreen extends StatelessWidget{
                         ()async{
 
                           if(ui.game == null){
-                            ui.addPlayer(Player());
-                            ui.addPlayer(Player());
+                            ui.addPlayer(LocalPlayer(ui));
+                            ui.addPlayer(LocalPlayer(ui));
                             await ui.startLocalGame();
                           }
 
