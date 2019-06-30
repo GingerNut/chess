@@ -2,9 +2,9 @@ import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class GameButton extends StatelessWidget{
+class GameButton extends StatefulWidget{
 
-  Icon icon;
+  IconData icon;
   Function onPressed;
   String text;
 
@@ -15,6 +15,11 @@ class GameButton extends StatelessWidget{
       );
 
   @override
+  _GameButtonState createState() => _GameButtonState();
+}
+
+class _GameButtonState extends State<GameButton> {
+
   Widget build(BuildContext context) {
 
     var ui = UI.of(context).ui;
@@ -27,8 +32,26 @@ class GameButton extends StatelessWidget{
           borderRadius: BorderRadius.circular(80.0),
           child: RaisedButton(
             color: Color(ui.theme.button.toInt),
-            onPressed: onPressed,
-            child: icon,
+
+            onPressed: widget.onPressed,
+            child: Column(
+                children: [
+                  Text(
+                      widget.text,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Color(ui.theme.lightText.toInt)
+            )
+                  ),
+
+                  Icon(
+                    widget.icon,
+                    color: Color(ui.theme.lightText.toInt),
+                  ),
+              ]
+            )
+
+            ,
           ),
         ),
       ),

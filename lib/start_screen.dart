@@ -40,7 +40,7 @@ class StartScreen extends StatelessWidget{
               children: <Widget>[
 
                 GameButton(
-                  Icon(Icons.arrow_forward_ios),
+                  Icons.arrow_forward_ios,
                         ()async{
 
                           if(ui.game == null){

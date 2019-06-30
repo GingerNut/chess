@@ -52,13 +52,13 @@ class ButtonRow extends StatelessWidget{
 
 
           GameButton(
-          Icon(Icons.home),
+            Icons.home,
               (){ui.events.add(ChangeScreen(StartScreen.routeName));},
             'home'
       ),
 
           GameButton(
-              Icon(Icons.computer),
+              Icons.computer,
                   () async{
                     ui.resetGame();
 
@@ -73,7 +73,7 @@ class ButtonRow extends StatelessWidget{
           ),
 
           GameButton(
-              Icon(Icons.person),
+              Icons.person,
                   () async{
                 ui.resetGame();
 
