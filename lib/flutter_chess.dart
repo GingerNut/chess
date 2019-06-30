@@ -1,6 +1,7 @@
 import 'package:chess/game_screen.dart';
 import 'package:chess/start_screen.dart';
 import 'package:chess/widget_library/flutter_dependencies.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:game_server/game_server.dart';
 
 class FlutterChess implements FlutterDependencies{
@@ -21,5 +22,8 @@ class FlutterChess implements FlutterDependencies{
 
 
   ];
+
+  Widget get home => StartScreen();
+
 
 }

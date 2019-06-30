@@ -6,18 +6,18 @@ import 'package:game_server/game_server.dart';
 
 class Router extends StatefulWidget{
 
-
-
   @override
   _RouterState createState() => _RouterState();
 }
 
 class _RouterState extends State<Router> {
-  Widget screen = StartScreen();
+
+  Widget screen;
 
   Widget build(BuildContext context) {
 
     var routes = UI.of(context).flutterDependencies.routes;
+    if(screen == null) screen = UI.of(context).flutterDependencies.home;
 
     return StreamBuilder<GameMessage>(
 

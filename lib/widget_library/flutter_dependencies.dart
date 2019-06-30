@@ -7,6 +7,8 @@ abstract class FlutterDependencies{
 
   List<Route> routes;
 
+  Widget get home;
+
 }
 
 class Route{
