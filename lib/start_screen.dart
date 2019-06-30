@@ -2,6 +2,7 @@ import 'package:chess/game_screen.dart';
 import 'package:chess/widget_library/bool_setting_widget.dart';
 import 'package:chess/main.dart';
 import 'package:chess/widget_library/double_setting_widget.dart';
+import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';

@@ -1,3 +1,4 @@
+import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_server/game_server.dart';
