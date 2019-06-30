@@ -41,7 +41,7 @@ class StartScreen extends StatelessWidget{
 
                 GameButton(
                   Icons.arrow_forward_ios,
-                        ()async{
+                        () async{
 
                           if(ui.game == null){
                             ui.addPlayer(LocalPlayer(ui));

@@ -1,13 +1,11 @@
 import 'package:chess/board.dart';
 import 'package:chess/start_screen.dart';
 import 'package:chess/widget_library/game_button.dart';
+import 'package:chess/widget_library/player_clock_widget.dart';
 import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';
-
-import 'main.dart';
-
 
 class GameScreen extends StatelessWidget{
   static const String routeName = 'game';
@@ -22,6 +20,8 @@ class GameScreen extends StatelessWidget{
 
         children: <Widget>[
 
+          StatusRow(),
+
           BoardWidget(),
 
           ButtonRow(),
@@ -32,7 +32,33 @@ class GameScreen extends StatelessWidget{
     );
   }
 
+}
 
+class StatusRow extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+
+    var ui = UI.of(context).ui;
+
+    return Container(
+      color: Color(ui.theme.background.toInt),
+      child: Row(
+
+        children: <Widget>[
+          TimerCard('Player 1', 40),
+
+          Expanded(
+            child: Container()
+          ),
+
+          TimerCard('Player 2' , 40),
+
+        ],
+
+
+      ),
+    );
+  }
 
 
 }

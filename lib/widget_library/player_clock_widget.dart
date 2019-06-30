@@ -1,37 +1,76 @@
+import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:game_server/game_server.dart';
 
-class TimerCard extends StatelessWidget{
+class TimerCard extends StatefulWidget{
 
   final String player;
   final double height;
 
-  const TimerCard(this.player, this.height);
+  TimerCard(this.player, this.height);
+
+  @override
+  _TimerCardState createState() => _TimerCardState();
+}
+
+class _TimerCardState extends State<TimerCard> {
+  double timeLeft;
+  Stopwatch stopwatch = Stopwatch();
+  bool inPlay = false;
 
   @override
   Widget build(BuildContext context) {
+    String text = widget.player;
 
-    return StreamBuilder<TimeStamp>(
-        stream: player.timer.events.stream,
+    if(inPlay) text = timeLeft.toString();
+
+    var ui = UI.of(context).ui;
+
+    return StreamBuilder<GameMessage>(
+        stream: ui.events.stream,
         builder: (context, snapshot) {
 
-          String string = 'timer ';
+          if(snapshot.connectionState == ConnectionState.waiting){
 
-          if(snapshot != null){
+            //TODO return a blank object - not null
 
-            string = snapshot.data == null ? 'timer' : snapshot.data.display;
+          } else {
 
-            if(player.timeLeft < 0.1) string = 'OUT ';
+            GameMessage message = snapshot.data;
+
+            print(message);
+
+            if(message is GameTimer){
+
+              switch(message.instruction){
+                case 'start':
+                  timeLeft = message.timeLeft;
+                  stopwatch.reset();
+                  stopwatch.start();
+                  inPlay = true;
+                  break;
+
+                case 'stop':
+                  stopwatch.stop();
+                  inPlay = false;
+                  break;
+              }
+
+
+
+            }
+
           }
-          ;
+
           return Container(
-            height: height,
+            height: widget.height,
 
             child: Center(
               child: Text(
-                string,
+                text,
                 style: TextStyle(
-                  color: FlutterInterface.getColor(Palette.colorCombo(player.color)),
-                  fontSize: height /2,
+                  color: Color(ui.theme.lightText.toInt),
+                  fontSize: widget.height,
                 ),
               ),
             ),
@@ -39,6 +78,4 @@ class TimerCard extends StatelessWidget{
         }
     );;
   }
-
-
 }
