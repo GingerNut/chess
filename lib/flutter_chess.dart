@@ -25,5 +25,4 @@ class FlutterChess implements FlutterDependencies{
 
   Widget get home => StartScreen();
 
-
 }
