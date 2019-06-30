@@ -5,6 +5,7 @@ import 'package:chess/widget_library/player_clock_widget.dart';
 import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:game_server/examples/chess/lib/chess.dart';
 import 'package:game_server/game_server.dart';
 
 class GameScreen extends StatelessWidget{
@@ -39,19 +40,34 @@ class StatusRow extends StatelessWidget{
   Widget build(BuildContext context) {
 
     var ui = UI.of(context).ui;
+    String whitePlayer = (ui.position as ChessPosition).whitePlayer;
+    String blackPlayer = (ui.position as ChessPosition).blackPlayer;
 
     return Container(
       color: Color(ui.theme.background.toInt),
       child: Row(
 
         children: <Widget>[
-          TimerCard('Player 1', 40),
+          TimerCard(whitePlayer,
+              40,
+          Color(ui.theme.black.toInt),
+        Color(ui.theme.white.toInt),
+        Color(ui.theme.grey.toInt),
 
-          Expanded(
+      ),
+
+
+
+        Expanded(
             child: Container()
           ),
 
-          TimerCard('Player 2' , 40),
+          TimerCard(blackPlayer,
+              40,
+            Color(ui.theme.white.toInt),
+            Color(ui.theme.black.toInt),
+            Color(ui.theme.grey.toInt),
+          ),
 
         ],
 
