@@ -1,12 +1,15 @@
 
+import 'package:chess/widget_library/flutter_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';
 
 class UI extends InheritedWidget{
-  final LocalInterface  ui = LocalInterface(ChessInjector());
+
+  final FlutterDependencies flutterDependencies;
+  final LocalInterface  ui;
   final Widget child;
 
-  UI(this.child);
+  UI(this.child, this.flutterDependencies): ui = LocalInterface(flutterDependencies.gameDependency);
 
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
