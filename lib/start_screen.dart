@@ -1,4 +1,5 @@
 
+import 'package:chess_mobile/game_screen.dart';
 import 'package:chess_mobile/widget_library/bool_setting_widget.dart';
 import 'package:chess_mobile/widget_library/double_setting_widget.dart';
 import 'package:chess_mobile/widget_library/game_button.dart';

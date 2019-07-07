@@ -1,4 +1,5 @@
 
+import 'package:chess_mobile/board.dart';
 import 'package:chess_mobile/start_screen.dart';
 import 'package:chess_mobile/widget_library/game_button.dart';
 import 'package:chess_mobile/widget_library/player_clock_widget.dart';
