@@ -70,11 +70,9 @@ packages:
   game_server:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "9e4f0d899c20a935595d79d7006a72dd8c51e8a8"
-      url: "https://github.com/GingerNut/game_server.git"
-    source: git
+      path: "/Users/stephenpoole/WebstormProjects/game_server"
+      relative: false
+    source: path
     version: "0.0.0"
   http_parser:
     dependency: transitive
@@ -201,4 +199,4 @@ packages:
     source: hosted
     version: "1.0.13"
 sdks:
-  dart: ">=2.2.0 <3.0.0"
+  dart: ">=2.2.2 <3.0.0"

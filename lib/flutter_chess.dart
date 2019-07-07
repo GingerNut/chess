@@ -1,6 +1,7 @@
-import 'package:chess/game_screen.dart';
-import 'package:chess/start_screen.dart';
-import 'package:chess/widget_library/flutter_dependencies.dart';
+
+import 'package:chess_mobile/game_screen.dart';
+import 'package:chess_mobile/start_screen.dart';
+import 'package:chess_mobile/widget_library/flutter_dependencies.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:game_server/game_server.dart';
 

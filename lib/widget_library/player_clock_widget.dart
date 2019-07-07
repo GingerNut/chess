@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:chess/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:game_server/game_server.dart';
 
@@ -13,7 +12,7 @@ class TimerCard extends StatefulWidget{
   Color background;
   Color inactive;
 
-  TimerCard(this.player, this.height, this.foreground, this.background, this.inactive);
+  TimerCard(Key key, this.player, this.height, this.foreground, this.background, this.inactive);
 
   @override
   _TimerCardState createState() => _TimerCardState();
@@ -57,7 +56,6 @@ class _TimerCardState extends State<TimerCard> {
     var ui = UI.of(context).ui;
     text = ui.position.timeLeft[widget.player].toString();
 
-
     return StreamBuilder<GameMessage>(
         stream: ui.events.stream,
         builder: (context, snapshot) {
@@ -67,7 +65,7 @@ class _TimerCardState extends State<TimerCard> {
             if(ui.position.playerId == widget.player) startClock(ui.position);
 
 
-          } else {
+          } else if(snapshot.connectionState == ConnectionState.active){
 
             GameMessage message = snapshot.data;
 
@@ -92,7 +90,7 @@ class _TimerCardState extends State<TimerCard> {
 
           return Container(
             height: widget.height,
-            color: inPlay ? widget.background : widget.inactive,
+            color: ui.position.playerId == widget.player ? widget.background : widget.inactive,
 
             child: StreamBuilder<String>(
               stream: ticker.stream,

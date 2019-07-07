@@ -5,13 +5,11 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:chess/flutter_chess.dart';
-import 'package:chess/widget_library/game_app.dart';
+
+import 'package:chess_mobile/flutter_chess.dart';
+import 'package:chess_mobile/widget_library/game_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:chess/main.dart';
-import 'package:game_server/game_server.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

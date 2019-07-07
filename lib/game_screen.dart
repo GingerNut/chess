@@ -1,11 +1,9 @@
-import 'package:chess/board.dart';
-import 'package:chess/start_screen.dart';
-import 'package:chess/widget_library/game_button.dart';
-import 'package:chess/widget_library/player_clock_widget.dart';
-import 'package:chess/widget_library/ui_inherited_widget.dart';
-import 'package:flutter/cupertino.dart';
+
+import 'package:chess_mobile/start_screen.dart';
+import 'package:chess_mobile/widget_library/game_button.dart';
+import 'package:chess_mobile/widget_library/player_clock_widget.dart';
+import 'package:chess_mobile/widget_library/ui_inherited_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:game_server/examples/chess/lib/chess.dart';
 import 'package:game_server/game_server.dart';
 
 class GameScreen extends StatelessWidget{
@@ -48,11 +46,13 @@ class StatusRow extends StatelessWidget{
       child: Row(
 
         children: <Widget>[
-          TimerCard(whitePlayer,
+          if(ui.game.timer) TimerCard(
+            UniqueKey(),
+            whitePlayer,
               40,
           Color(ui.theme.black.toInt),
-        Color(ui.theme.white.toInt),
-        Color(ui.theme.grey.toInt),
+          Color(ui.theme.white.toInt),
+          Color(ui.theme.grey.toInt),
 
       ),
 
@@ -62,7 +62,9 @@ class StatusRow extends StatelessWidget{
             child: Container()
           ),
 
-          TimerCard(blackPlayer,
+          if(ui.game.timer) TimerCard(
+            UniqueKey(),
+            blackPlayer,
               40,
             Color(ui.theme.white.toInt),
             Color(ui.theme.black.toInt),
