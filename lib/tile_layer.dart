@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_server/game_server.dart';
 
-import 'main.dart';
 
 class TileLayer extends StatelessWidget {
 
@@ -20,7 +19,7 @@ class TileLayer extends StatelessWidget {
         builder: (context, snapshot) {
           pieces.clear();
 
-          (ui.position as ChessPosition).board.tiles.forEach((t) {
+          (ui.position as ChessPosition).tiles.tiles.forEach((t) {
             pieces.add(ChessTile(t));
           });
 
@@ -68,7 +67,6 @@ class TileLayer extends StatelessWidget {
 
             onTap: (){
               (ui.input as ChessInput).tapTile(t);
-
             },
 
             child: SizedBox(

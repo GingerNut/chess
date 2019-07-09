@@ -21,11 +21,11 @@ class PieceLayer extends StatelessWidget {
 
           pieces.clear();
 
-          (ui.position as ChessPosition).board.whiteArmy.forEach((p) {
+          (ui.position as ChessPosition).whiteArmy.forEach((p) {
             pieces.add(ChessPieceWidget(p, ChessColor.white));
           });
 
-          (ui.position as ChessPosition).board.blackArmy.forEach((p) {
+          (ui.position as ChessPosition).blackArmy.forEach((p) {
             pieces.add(ChessPieceWidget(p, ChessColor.black));
           });
 
