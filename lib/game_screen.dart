@@ -20,7 +20,7 @@ class GameScreen extends StatelessWidget{
 
         children: <Widget>[
 
-          StatusRow(),
+//          StatusRow(),
 
           BoardWidget(),
 
@@ -112,6 +112,7 @@ class ButtonRow extends StatelessWidget{
                     await ui.startLocalGame();
 
                     ui.events.add(ChangeScreen(GameScreen.routeName));
+                    ui.events.add(RefreshScreen());
 
                 },
               'Comp'
@@ -127,6 +128,7 @@ class ButtonRow extends StatelessWidget{
                 await ui.startLocalGame();
 
                 ui.events.add(ChangeScreen(GameScreen.routeName));
+                ui.events.add(RefreshScreen());
 
               },
               'Human'
