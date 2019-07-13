@@ -22,11 +22,11 @@ class PieceLayer extends StatelessWidget {
           pieces.clear();
 
           (ui.position as ChessPosition).whiteArmy.forEach((p) {
-            pieces.add(ChessPieceWidget(p, ChessColor.white));
+            pieces.add(ChessPieceWidget(p, Palette.COLOR_WHITE));
           });
 
           (ui.position as ChessPosition).blackArmy.forEach((p) {
-            pieces.add(ChessPieceWidget(p, ChessColor.black));
+            pieces.add(ChessPieceWidget(p, Palette.COLOR_BLACK));
           });
 
           return Stack(
@@ -42,7 +42,7 @@ class PieceLayer extends StatelessWidget {
 
   class ChessPieceWidget extends StatelessWidget{
   final ChessPiece p;
-  final ChessColor chessColor;
+  final int chessColor;
 
   const ChessPieceWidget(this.p,this.chessColor);
 
@@ -55,7 +55,7 @@ class PieceLayer extends StatelessWidget {
   var ui = UI.of(context).ui;
   ChessInput input = ui.input;
 
-  int tileColor = chessColor == ChessColor.white ?
+  int tileColor = chessColor == Palette.COLOR_WHITE ?
       ui.theme.lightText.toInt : ui.theme.darkText.toInt;
 
 
