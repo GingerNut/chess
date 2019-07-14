@@ -40,20 +40,52 @@ class StartScreen extends StatelessWidget{
               children: <Widget>[
 
                 GameButton(
-                  Icons.arrow_forward_ios,
+                    Icons.person,
+                        () async{
+                      ui.resetGame();
+
+                      ui.addPlayer(LocalPlayer(ui));
+                      ui.addPlayer(LocalPlayer(ui));
+
+                      ui.newGame.firstPlayer = 'Player 1';
+                      ui.playerId = 'Player 1';
+
+
+                      await ui.startLocalGame();
+
+                      ui.events.add(ChangeScreen(GameScreen.routeName));
+
+                    },
+                    'Human'
+                ),
+
+                GameButton(
+                    Icons.computer,
+                        () async{
+                      ui.resetGame();
+
+                      LocalPlayer user = LocalPlayer(ui);
+
+                      ui.addPlayer(user);
+                      ui.addPlayer(ComputerPlayer(ChessInjector()));
+                      ui.playerId = user.id;
+                      await ui.startLocalGame();
+
+                      ui.events.add(ChangeScreen(GameScreen.routeName));
+
+                    },
+                    'Comp'
+                ),
+
+                if(ui.game != null )GameButton(
+                    Icons.arrow_back,
                         () async{
 
-                          if(ui.game == null){
-                            ui.addPlayer(LocalPlayer(ui));
-                            ui.addPlayer(LocalPlayer(ui));
-                            await ui.startLocalGame();
-                          }
+                      ui.events.add(ChangeScreen(GameScreen.routeName));
 
-                          ui.events.add(ChangeScreen(GameScreen.routeName));
-                        },
-                  'start game'
-
-                )
+                    },
+                    'Comp'
+                ),
               ],
 
             )
